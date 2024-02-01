@@ -1,0 +1,42 @@
+body {
+    background-color: gray; /* Vibrant background color */
+    font-family: Arial, sans-serif;
+}
+
+section {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center; /* Center align the content */
+}
+
+.source-container,
+.link-container,
+.format-container,
+.button-container {
+    margin-bottom: 20px;
+}
+
+.source-container select,
+.link-container input,
+.format-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-container .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: blanchedalmond; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container .btn:hover {
+    background-color: #c7e4c9; /* black background on hover */
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-nZPlTG/izRBb8BhGZdtAM4jNH4A9Ew1j/Qw1vRg6DkHWbKz/2pK0z2r3F1Hz0oJMoK2lwFcrYVsRGXwhGY9EhA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>Media Downloader</title>
+</head>
+
+<body>
+
+    
+        <ul>
+
+        </ul>
+    </header>
+
+    <section>
+        <h1>Media Downloader</h1>
+        <div class="source-container">
+            <i class="fab fa-youtube"></i>
+            <label for="source">Choose Source:</label>
+            <select class="source" id="source" required>
+                <option value="youtube">YouTube</option>
+                <option value="tiktok">TikTok</option>
+                <option value="twitter">Twitter</option>
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+            </select>
+        </div>
+        <div class="link-container">
+            <label for="link">Video Link</label>
+            <input type="text" class="link" id="link" name="link" placeholder="Enter Video Link" required>
+        </div>
+        <div class="format-container">
+            <label for="format">Format</label>
+            <select class="format" id="format" required>
+                <option selected disabled>Select Video Format</option>
+                <option value="mp3">Mp3</option>
+                <option value="144">144p</option>
+                <option value="360">360p</option>
+                <option value="480">480p</option>
+                <option value="720">720p</option>
+                <option value="1080">1080p</option>
+                <option value="4k">4k</option>
+                <option value="8k">8k</option>
+            </select>
+        </div>
+        <div class="button-container">
+            <button class="btn" type="button">Download</button>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            $(".btn").click(function() {
+                var source = $(".source").val();
+                var link = $(".link").val();
+                var format = $(".format").val();
+                if (!format) {
+                    alert("Please select a video format.");
+                    return;
+                }
+                download(source, link, format);
+            });
+
+            function download(source, link, format) {
+                var baseUrl;
+                if (source === "youtube") {
+                    baseUrl = "https://loader.to/api/button/?url=";
+                } else if (source === "tiktok") {
+                    baseUrl = "https://tiktokloader.com/api/button/?url=";
+                } else if (source === "twitter") {
+                    baseUrl = "https://twitterloader.com/api/button/?url=";
+                } else if (source === "facebook") {
+                    baseUrl = "https://facebookloader.com/api/button/?url=";
+                } else if (source === "instagram") {
+                    baseUrl = "https://instagramloader.com/api/button/?url=";
+                } else {
+                    alert("Invalid source selected.");
+                    return;
+                }
+                $('.button-container').html('<iframe style="height: 50px; border: none; overflow: hidden;" src="' + baseUrl + link + '&f=' + format + '"></iframe>');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+
+
